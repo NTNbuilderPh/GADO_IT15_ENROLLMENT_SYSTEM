@@ -1,61 +1,217 @@
+# 🎓 GADO_IT15_ENROLLMENT_SYSTEM
 
-              GADO_IT15_ENROLLMENT_SYSTEM
-University of Mindanao - Academic Portal Project
+## University of Mindanao – Academic Portal Project
 
-This project is a high-fidelity enrollment and academic management portal built for the IT15 (Web Systems and Technologies) course at the University of Mindanao.
+A high-fidelity Enrollment and Academic Management Portal developed for **IT15 – Web Systems and Technologies** at the University of Mindanao (Tagum Campus).
 
----------------------------------------------------------
-🚀 THE "ACADEMIC ARSENAL" FEATURES
----------------------------------------------------------
-We have implemented a dual-focus system that balances smooth entry (Onboarding) with long-term student success (Portal Management).
+This system demonstrates practical implementation of Laravel’s MVC architecture, Eloquent ORM relationships, authentication logic, validation rules, and structured frontend design.
 
-[Feature Set]          [Goal]                       [Implementation Details]
-Enrollment Design      Frictionless Onboarding      Digital ID upload & SIS integration via student_number verification.
-Academic Portal        Daily Task Management        Real-time tracking for grades and attendance percentages.
-Communication          Unified Messaging            Automated "Welcome" email sequences and direct faculty messaging.
-Financials             Secure Ledger                Secure tuition payment gateway and scholarship balance ledger.
+---
 
----------------------------------------------------------
-🏗 SYSTEM ARCHITECTURE & LOGIC
----------------------------------------------------------
-1. Enrollment Business Rules
-- Capacity Control: Every course has a defined capacity. If students_count >= capacity, the system blocks the enrollment request.
-- Duplicate Prevention: The backend checks the course_student pivot table to ensure a student cannot enroll in the same subject twice.
-- SIS Integration: The Login system uses a unified authentication logic where students can use their Student ID or Email to access the portal.
+## 🚀 Academic Arsenal Features
 
-2. Database Schema (Many-to-Many)
-- Students Table: Stores profiles and unique identifiers.
-- Courses Table: Stores academic subjects and enrollment limits.
-- course_student Table: The pivot table connecting students to their chosen subjects.
+This project follows a **dual-focus system design**:
 
----------------------------------------------------------
-🛠 TECHNICAL SETUP
----------------------------------------------------------
-Root Directory: Place all Laravel folders here.
-Environment:
-- Copy .env.example to .env
-- Run php artisan key:generate
+* **Frictionless Onboarding** (Enrollment Efficiency)
+* **Long-Term Academic Management** (Student Success Portal)
 
-Database:
-- Run php artisan migrate to build the tables.
-- Run php artisan db:seed --class=UMPortalSeeder to populate UM data.
+### 🔹 Core Features
 
-Assets:
-- CSS: public/css/app.css (UM Maroon Branding)
-- JS: public/js/app.js (Capacity validation logic)
+#### 1️⃣ Enrollment Design – *Frictionless Onboarding*
 
----------------------------------------------------------
-📂 SUBMISSION FILES
----------------------------------------------------------
-/app (Models & Controllers)
-/database (Migrations & Seeders)
-/resources/views (Blade Templates: Dashboard, Enroll, Login, Portal)
-/public (CSS, JS, and UM Logos)
-/routes (web.php)
-README.md (This documentation)
+* Digital ID upload system
+* Student Information System (SIS) integration
+* Student verification via `student_number`
+* Automated enrollment validation
 
-Note: vendor/ and node_modules/ have been excluded to maintain a lightweight submission size.
+#### 2️⃣ Academic Portal – *Daily Task Management*
 
-Course: IT15 - Web Systems and Technologies
-Institution: University of Mindanao (Tagum Campus)
+* Real-time grade tracking
+* Attendance percentage monitoring
+* Student dashboard overview
+* Structured academic summaries
+
+#### 3️⃣ Communication – *Unified Messaging*
+
+* Automated "Welcome" email sequence
+* Direct faculty-to-student messaging support
+* Portal-based announcements
+
+#### 4️⃣ Financials – *Secure Ledger System*
+
+* Secure tuition payment gateway integration (simulation-ready)
+* Scholarship balance ledger tracking
+* Transparent financial summary display
+
+---
+
+# 🏗 System Architecture & Business Logic
+
+## 1️⃣ Enrollment Business Rules
+
+### ✅ Capacity Control
+
+Each course has a defined enrollment capacity.
+
+```php
+if ($students_count >= $capacity) {
+    // Enrollment request blocked
+}
+```
+
+If the maximum number of students is reached, enrollment is automatically denied.
+
+---
+
+### ✅ Duplicate Prevention
+
+The system checks the `course_student` pivot table to prevent duplicate enrollments.
+
+```php
+$exists = $student->courses()->where('course_id', $course->id)->exists();
+```
+
+Students cannot enroll in the same course twice.
+
+---
+
+### ✅ SIS Authentication Logic
+
+Unified login system:
+
+* Students may log in using:
+
+  * Student ID
+  * Email Address
+
+This ensures flexible and modern authentication behavior.
+
+---
+
+# 🗄 Database Design (Many-to-Many Relationship)
+
+### 📌 Students Table
+
+* Stores student profiles
+* Unique `student_number`
+* Authentication credentials
+
+### 📌 Courses Table
+
+* Course code
+* Course title
+* Defined capacity limit
+
+### 📌 course_student (Pivot Table)
+
+* `student_id`
+* `course_id`
+* Manages many-to-many relationship
+
+---
+
+# 🛠 Technical Setup
+
+## 📂 Root Directory
+
+Place all Laravel project folders inside the root directory.
+
+---
+
+## ⚙️ Environment Configuration
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Configure database credentials inside `.env`.
+
+---
+
+## 🗃 Database Setup
+
+```bash
+php artisan migrate
+php artisan db:seed --class=UMPortalSeeder
+```
+
+This will:
+
+* Create necessary tables
+* Populate initial University of Mindanao data
+
+---
+
+## 🎨 Frontend Assets
+
+| Asset Type | Location             | Description                             |
+| ---------- | -------------------- | --------------------------------------- |
+| CSS        | `public/css/app.css` | University of Mindanao Maroon Branding  |
+| JS         | `public/js/app.js`   | Capacity validation & interactive logic |
+
+---
+
+# 📂 Project Structure
+
+```
+app/
+ ├── Models/
+ └── Controllers/
+
+database/
+ ├── migrations/
+ └── seeders/
+
+resources/views/
+ ├── dashboard.blade.php
+ ├── enroll.blade.php
+ ├── login.blade.php
+ └── portal.blade.php
+
+public/
+ ├── css/
+ ├── js/
+ └── images/
+
+routes/
+ └── web.php
+
+README.md
+```
+
+---
+
+# 📦 Submission Notes
+
+To maintain a lightweight repository size:
+
+* `vendor/` has been excluded
+* `node_modules/` has been excluded
+
+These directories can be restored via:
+
+```bash
+composer install
+npm install
+```
+
+---
+
+# 🎓 Academic Information
+
+**Course:** IT15 – Web Systems and Technologies
+**Institution:** University of Mindanao (Tagum Campus)
+**Framework:** Laravel 12
+**PHP Version:** ^8.2
+
+---
+
+# 📄 License
+
+This project is developed strictly for academic purposes under the University of Mindanao.
+
+© 2026 University of Mindanao
+
+
 
