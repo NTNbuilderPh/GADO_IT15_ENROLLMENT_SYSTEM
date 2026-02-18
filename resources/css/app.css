@@ -1,0 +1,185 @@
+/* * University of Mindanao Color Palette 
+ * Primary Maroon: #800000
+ * Background Gray: #f4f4f4
+ * Text Gray: #333333
+ */
+
+:root {
+    --um-maroon: #800000;
+    --um-maroon-dark: #600000;
+    --um-bg: #f4f4f4;
+    --sidebar-width: 260px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--um-bg);
+    color: var(--text-gray);
+}
+
+/* --- LOGIN PAGE STYLES (Screenshot 021144) --- */
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #fff;
+}
+
+.login-content-wrapper {
+    display: flex;
+    max-width: 1100px;
+    width: 100%;
+    gap: 50px;
+}
+
+.welcome-section {
+    flex: 1;
+    padding-top: 40px;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    color: #444;
+}
+
+.welcome-section .highlight {
+    color: var(--um-maroon);
+    font-weight: bold;
+}
+
+.login-card {
+    width: 400px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-card img.logo {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.login-card h2 {
+    color: var(--um-maroon);
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--um-maroon);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-login:hover {
+    background-color: var(--um-maroon-dark);
+}
+
+/* --- PORTAL LAYOUT STYLES (Screenshot 021244) --- */
+.portal-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: #ebebeb;
+    border-right: 4px solid #888;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.sidebar-header {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    color: var(--um-maroon);
+}
+
+.nav-group-title {
+    padding: 15px 15px 5px 15px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: bold;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #444;
+    font-size: 13px;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    background: #ddd;
+}
+
+.nav-link.active {
+    color: var(--um-maroon);
+    font-weight: bold;
+}
+
+.nav-link i {
+    width: 16px;
+    color: var(--um-maroon);
+}
+
+.main-content {
+    flex: 1;
+    background: #f0f0f0;
+    overflow-y: auto;
+}
+
+/* Dashboard Content */
+.survey-card {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
