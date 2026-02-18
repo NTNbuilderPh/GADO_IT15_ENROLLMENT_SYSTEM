@@ -1,59 +1,164 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+============================================================
+               GADO_IT15_ENROLLMENT_SYSTEM
+============================================================
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+        University of Mindanao - Academic Portal Project
 
-## About Laravel
+This project is a high-fidelity Enrollment and Academic 
+Management Portal developed for:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Course: IT15 – Web Systems and Technologies
+Institution: University of Mindanao (Tagum Campus)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+============================================================
+🚀 THE "ACADEMIC ARSENAL" FEATURES
+============================================================
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The system is designed with a dual-focus approach:
 
-## Learning Laravel
+1. Smooth Entry (Onboarding Experience)
+2. Long-Term Student Success (Portal Management)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+------------------------------------------------------------
+FEATURE SET OVERVIEW
+------------------------------------------------------------
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+[1] ENROLLMENT DESIGN
+Goal: Frictionless Onboarding
+• Digital ID upload
+• SIS integration via student_number verification
+• Structured student validation workflow
 
-## Laravel Sponsors
+[2] ACADEMIC PORTAL
+Goal: Daily Task Management
+• Real-time grade tracking
+• Attendance percentage monitoring
+• Centralized academic dashboard
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+[3] COMMUNICATION
+Goal: Unified Messaging
+• Automated “Welcome” email sequences
+• Direct faculty-to-student messaging
+• Integrated notification system
 
-### Premium Partners
+[4] FINANCIALS
+Goal: Secure Ledger Management
+• Secure tuition payment gateway
+• Scholarship balance ledger tracking
+• Transparent financial records
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+============================================================
+🏗 SYSTEM ARCHITECTURE & LOGIC
+============================================================
 
-## Contributing
+------------------------------------------------------------
+1. ENROLLMENT BUSINESS RULES
+------------------------------------------------------------
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+CAPACITY CONTROL
+• Each course has a defined capacity.
+• If students_count >= capacity
+  → Enrollment request is automatically blocked.
 
-## Code of Conduct
+DUPLICATE PREVENTION
+• Backend validates via course_student pivot table.
+• Prevents a student from enrolling in the same subject twice.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+SIS INTEGRATION
+• Unified authentication logic.
+• Students may log in using:
+  - Student ID
+  - Registered Email Address
 
-## Security Vulnerabilities
+------------------------------------------------------------
+2. DATABASE SCHEMA (Many-to-Many Relationship)
+------------------------------------------------------------
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+STUDENTS TABLE
+• Stores student profiles
+• Contains unique identifiers
 
-## License
+COURSES TABLE
+• Stores academic subjects
+• Defines enrollment capacity limits
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+COURSE_STUDENT TABLE (Pivot)
+• Connects students to enrolled subjects
+• Manages many-to-many relationships
+
+============================================================
+🛠 TECHNICAL SETUP
+============================================================
+
+ROOT DIRECTORY
+• Place all Laravel project folders here.
+
+------------------------------------------------------------
+ENVIRONMENT CONFIGURATION
+------------------------------------------------------------
+
+1. Copy environment file:
+   cp .env.example .env
+
+2. Generate application key:
+   php artisan key:generate
+
+------------------------------------------------------------
+DATABASE SETUP
+------------------------------------------------------------
+
+1. Run migrations:
+   php artisan migrate
+
+2. Seed UM sample data:
+   php artisan db:seed --class=UMPortalSeeder
+
+------------------------------------------------------------
+ASSETS STRUCTURE
+------------------------------------------------------------
+
+CSS:
+• public/css/app.css
+  - Implements UM Maroon Branding
+
+JavaScript:
+• public/js/app.js
+  - Handles capacity validation logic
+  - Frontend dynamic behaviors
+
+============================================================
+📂 SUBMISSION FILE STRUCTURE
+============================================================
+
+/app
+  → Models & Controllers
+
+/database
+  → Migrations & Seeders
+
+/resources/views
+  → Blade Templates:
+     - Dashboard
+     - Enroll
+     - Login
+     - Portal
+
+/public
+  → CSS, JS, and UM Logos
+
+/routes
+  → web.php
+
+README.md
+  → Project Documentation
+
+------------------------------------------------------------
+
+NOTE:
+vendor/ and node_modules/ folders are excluded 
+to maintain a lightweight ZIP submission size.
+
+============================================================
+END OF DOCUMENT
+============================================================
+
