@@ -1,164 +1,61 @@
-============================================================
-               GADO_IT15_ENROLLMENT_SYSTEM
-============================================================
 
-        University of Mindanao - Academic Portal Project
+              GADO_IT15_ENROLLMENT_SYSTEM
+University of Mindanao - Academic Portal Project
 
-This project is a high-fidelity Enrollment and Academic 
-Management Portal developed for:
+This project is a high-fidelity enrollment and academic management portal built for the IT15 (Web Systems and Technologies) course at the University of Mindanao.
 
-Course: IT15 – Web Systems and Technologies
-Institution: University of Mindanao (Tagum Campus)
-
-============================================================
+---------------------------------------------------------
 🚀 THE "ACADEMIC ARSENAL" FEATURES
-============================================================
+---------------------------------------------------------
+We have implemented a dual-focus system that balances smooth entry (Onboarding) with long-term student success (Portal Management).
 
-The system is designed with a dual-focus approach:
+[Feature Set]          [Goal]                       [Implementation Details]
+Enrollment Design      Frictionless Onboarding      Digital ID upload & SIS integration via student_number verification.
+Academic Portal        Daily Task Management        Real-time tracking for grades and attendance percentages.
+Communication          Unified Messaging            Automated "Welcome" email sequences and direct faculty messaging.
+Financials             Secure Ledger                Secure tuition payment gateway and scholarship balance ledger.
 
-1. Smooth Entry (Onboarding Experience)
-2. Long-Term Student Success (Portal Management)
-
-------------------------------------------------------------
-FEATURE SET OVERVIEW
-------------------------------------------------------------
-
-[1] ENROLLMENT DESIGN
-Goal: Frictionless Onboarding
-• Digital ID upload
-• SIS integration via student_number verification
-• Structured student validation workflow
-
-[2] ACADEMIC PORTAL
-Goal: Daily Task Management
-• Real-time grade tracking
-• Attendance percentage monitoring
-• Centralized academic dashboard
-
-[3] COMMUNICATION
-Goal: Unified Messaging
-• Automated “Welcome” email sequences
-• Direct faculty-to-student messaging
-• Integrated notification system
-
-[4] FINANCIALS
-Goal: Secure Ledger Management
-• Secure tuition payment gateway
-• Scholarship balance ledger tracking
-• Transparent financial records
-
-============================================================
+---------------------------------------------------------
 🏗 SYSTEM ARCHITECTURE & LOGIC
-============================================================
+---------------------------------------------------------
+1. Enrollment Business Rules
+- Capacity Control: Every course has a defined capacity. If students_count >= capacity, the system blocks the enrollment request.
+- Duplicate Prevention: The backend checks the course_student pivot table to ensure a student cannot enroll in the same subject twice.
+- SIS Integration: The Login system uses a unified authentication logic where students can use their Student ID or Email to access the portal.
 
-------------------------------------------------------------
-1. ENROLLMENT BUSINESS RULES
-------------------------------------------------------------
+2. Database Schema (Many-to-Many)
+- Students Table: Stores profiles and unique identifiers.
+- Courses Table: Stores academic subjects and enrollment limits.
+- course_student Table: The pivot table connecting students to their chosen subjects.
 
-CAPACITY CONTROL
-• Each course has a defined capacity.
-• If students_count >= capacity
-  → Enrollment request is automatically blocked.
-
-DUPLICATE PREVENTION
-• Backend validates via course_student pivot table.
-• Prevents a student from enrolling in the same subject twice.
-
-SIS INTEGRATION
-• Unified authentication logic.
-• Students may log in using:
-  - Student ID
-  - Registered Email Address
-
-------------------------------------------------------------
-2. DATABASE SCHEMA (Many-to-Many Relationship)
-------------------------------------------------------------
-
-STUDENTS TABLE
-• Stores student profiles
-• Contains unique identifiers
-
-COURSES TABLE
-• Stores academic subjects
-• Defines enrollment capacity limits
-
-COURSE_STUDENT TABLE (Pivot)
-• Connects students to enrolled subjects
-• Manages many-to-many relationships
-
-============================================================
+---------------------------------------------------------
 🛠 TECHNICAL SETUP
-============================================================
+---------------------------------------------------------
+Root Directory: Place all Laravel folders here.
+Environment:
+- Copy .env.example to .env
+- Run php artisan key:generate
 
-ROOT DIRECTORY
-• Place all Laravel project folders here.
+Database:
+- Run php artisan migrate to build the tables.
+- Run php artisan db:seed --class=UMPortalSeeder to populate UM data.
 
-------------------------------------------------------------
-ENVIRONMENT CONFIGURATION
-------------------------------------------------------------
+Assets:
+- CSS: public/css/app.css (UM Maroon Branding)
+- JS: public/js/app.js (Capacity validation logic)
 
-1. Copy environment file:
-   cp .env.example .env
+---------------------------------------------------------
+📂 SUBMISSION FILES
+---------------------------------------------------------
+/app (Models & Controllers)
+/database (Migrations & Seeders)
+/resources/views (Blade Templates: Dashboard, Enroll, Login, Portal)
+/public (CSS, JS, and UM Logos)
+/routes (web.php)
+README.md (This documentation)
 
-2. Generate application key:
-   php artisan key:generate
+Note: vendor/ and node_modules/ have been excluded to maintain a lightweight submission size.
 
-------------------------------------------------------------
-DATABASE SETUP
-------------------------------------------------------------
-
-1. Run migrations:
-   php artisan migrate
-
-2. Seed UM sample data:
-   php artisan db:seed --class=UMPortalSeeder
-
-------------------------------------------------------------
-ASSETS STRUCTURE
-------------------------------------------------------------
-
-CSS:
-• public/css/app.css
-  - Implements UM Maroon Branding
-
-JavaScript:
-• public/js/app.js
-  - Handles capacity validation logic
-  - Frontend dynamic behaviors
-
-============================================================
-📂 SUBMISSION FILE STRUCTURE
-============================================================
-
-/app
-  → Models & Controllers
-
-/database
-  → Migrations & Seeders
-
-/resources/views
-  → Blade Templates:
-     - Dashboard
-     - Enroll
-     - Login
-     - Portal
-
-/public
-  → CSS, JS, and UM Logos
-
-/routes
-  → web.php
-
-README.md
-  → Project Documentation
-
-------------------------------------------------------------
-
-NOTE:
-vendor/ and node_modules/ folders are excluded 
-to maintain a lightweight ZIP submission size.
-
-============================================================
-END OF DOCUMENT
-============================================================
+Course: IT15 - Web Systems and Technologies
+Institution: University of Mindanao (Tagum Campus)
 
